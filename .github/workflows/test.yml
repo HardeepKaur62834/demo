@@ -16,4 +16,5 @@ jobs:
         # run: |
         #   cd scripts
         #   python hello.py
+        run: python hello.py
         working-directory: ./scripts
