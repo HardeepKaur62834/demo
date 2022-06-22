@@ -1,0 +1,18 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  job1-run_py_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - name: Run a python file
+        run: |
+          cd scripts
+          python hello.py
