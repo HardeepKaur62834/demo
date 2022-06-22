@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
       - name: Run a python file
-        run: |
-          cd scripts
-          python hello.py
+        # run: |
+        #   cd scripts
+        #   python hello.py
+        working-directory: ./scripts
