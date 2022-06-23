@@ -14,7 +14,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
       - name: Run a python file
         run: |
           cd scripts
@@ -33,6 +33,16 @@ jobs:
 
   job3_dependency:
     needs: [job1-run_py_file,job2-secret]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a line
+        run: echo "This is a file with password $password"
+
+  job4_if_dependency:
+    if: ${{ always() }}
+    needs: job1-run_py_file
     runs-on: ubuntu-latest
 
     steps:
