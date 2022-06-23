@@ -4,12 +4,15 @@ on:
     branches: [ "master" ]
 
   workflow_dispatch:
+env:
+  password: ${{ secrets.PASSWORD }}
 
 jobs:
   job1-run_py_file:
     runs-on: ubuntu-latest
 
     steps:
+
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v2
       - name: Run a python file
@@ -18,3 +21,13 @@ jobs:
           python hello.py
         # run: python hello.py
         # working-directory: ./scripts
+
+  job2-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a line
+        run: echo "This is a file with password $password"
+
+        
