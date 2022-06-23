@@ -23,7 +23,16 @@ jobs:
         # working-directory: ./scripts
 
   job2-secret:
-    needs: job1-run_py_file
+    # needs: job1-run_py_file
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a line
+        run: echo "This is a file with password $password"
+
+  job3_dependency:
+    needs: [job1-run_py_file,job2-secret]
     runs-on: ubuntu-latest
 
     steps:
