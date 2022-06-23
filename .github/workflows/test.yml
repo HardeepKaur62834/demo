@@ -23,6 +23,7 @@ jobs:
         # working-directory: ./scripts
 
   job2-secret:
+    needs: job1-run_py_file
     runs-on: ubuntu-latest
 
     steps:
